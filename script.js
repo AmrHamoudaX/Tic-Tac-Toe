@@ -29,4 +29,12 @@ function Cell() {
   const getValue = () => value;
   return { addMark, getValue };
 }
+
+function Gamecontroller(player1 = "firstPlayer", player2 = "secondPlayer") {
+  const board = Gameboard();
+  const players = [
+    { name: player1, mark: "X" },
+    { name: player2, mark: "O" },
+  ];
+}
 const board = Gameboard();
