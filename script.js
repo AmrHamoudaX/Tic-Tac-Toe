@@ -41,15 +41,20 @@ function Gamecontroller(player1 = "firstPlayer", player2 = "secondPlayer") {
   const switchPlayer = () => {
     activePlayer = activePlayer === players[0] ? players[1] : players[0];
   };
+  const nextRound = () => {
+    console.log(board.printBoard());
+    console.log(`Now it's ${getActivePlayer().name}'s turn to play`);
+  };
   const playRound = (row, column) => {
     console.log(
       `${getActivePlayer().name} has played in ${row}row and ${column}column`,
     );
     board.applyMark(row, column, getActivePlayer().mark);
     switchPlayer();
-    console.log(board.printBoard());
+    nextRound();
   };
-  return { getActivePlayer, playRound };
+  nextRound();
+  return { nextRound, getActivePlayer, playRound };
 }
 const board = Gameboard();
 const game = Gamecontroller();
