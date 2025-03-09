@@ -15,9 +15,98 @@ function Gameboard() {
     return board.map((row) => row.map((cell) => cell.getValue()));
   };
   const applyMark = (row, column, player) => {
-    return board[row][column].addMark(player);
+    board[row][column].addMark(player);
   };
-  return { printBoard, getBoard, applyMark };
+
+  //Check for winner
+  const checkForWinner = () => {
+    const array = board.map((row) =>
+      row.reduce(
+        (accummulator, current) => accummulator + current.getValue(),
+        "",
+      ),
+    );
+    //Check for winning horizontally
+    const winnerX = () => {
+      for (i = 0; i < 3; i++) {
+        if (array[i] === "XXX") {
+          console.log("X wins!!");
+        }
+      }
+      //Check for winning for first vertical line
+      let verticalX0 = 0;
+      for (i = 0; i < 3; i++) {
+        if (board[i][0].getValue() === "X") {
+          verticalX0 += 1;
+        }
+      }
+      if (verticalX0 === 3) {
+        console.log("X wins!!");
+      }
+      //Check for winning for second vertical line
+      let verticalX1 = 0;
+      for (i = 0; i < 3; i++) {
+        if (board[i][1].getValue() === "X") {
+          verticalX1 += 1;
+        }
+      }
+      if (verticalX1 === 3) {
+        console.log("X wins!!");
+      }
+      //Check for winning for third vertical line
+      let verticalX2 = 0;
+      for (i = 0; i < 3; i++) {
+        if (board[i][2].getValue() === "X") {
+          verticalX2 += 1;
+        }
+      }
+      if (verticalX2 === 3) {
+        console.log("X wins!!");
+      }
+    };
+    const winnerO = () => {
+      for (i = 0; i < 3; i++) {
+        if (array[i] === "OOO") {
+          console.log("O wins");
+        }
+      }
+
+      //Check for winning for first vertical line
+      let verticalO0 = 0;
+      for (i = 0; i < 3; i++) {
+        if (board[i][0].getValue() === "O") {
+          verticalO0 += 1;
+        }
+      }
+      if (verticalO0 === 3) {
+        console.log("O wins!!");
+      }
+      //Check for winning for second vertical line
+      let verticalO1 = 0;
+      for (i = 0; i < 3; i++) {
+        if (board[i][1].getValue() === "O") {
+          verticalO1 += 1;
+        }
+      }
+      if (verticalO1 === 3) {
+        console.log("O wins!!");
+      }
+      //Check for winning for third vertical line
+      let verticalO2 = 0;
+      for (i = 0; i < 3; i++) {
+        if (board[i][2].getValue() === "O") {
+          verticalO2 += 1;
+        }
+      }
+      if (verticalO2 === 3) {
+        console.log("O wins!!");
+      }
+    };
+    console.log(array);
+    winnerX();
+    winnerO();
+  };
+  return { checkForWinner, printBoard, getBoard, applyMark };
 }
 
 function Cell() {
@@ -50,6 +139,7 @@ function Gamecontroller(player1 = "firstPlayer", player2 = "secondPlayer") {
       `${getActivePlayer().name} has played in ${row}row and ${column}column`,
     );
     board.applyMark(row, column, getActivePlayer().mark);
+    board.checkForWinner();
     switchPlayer();
     nextRound();
   };
