@@ -153,6 +153,66 @@ function GameController(player1 = "firstPlayer", player2 = "secondPlayer") {
   return {
     playRound,
     getBoard: board.getBoard(),
+    getActivePlayer,
   };
 }
-const game = GameController();
+
+//Working with the Dom
+function ScreenController() {
+  const game = GameController();
+  const cell1 = document.querySelector(".one");
+  const cell2 = document.querySelector(".two");
+  const cell3 = document.querySelector(".three");
+  const cell4 = document.querySelector(".four");
+  const cell5 = document.querySelector(".five");
+  const cell6 = document.querySelector(".six");
+  const cell7 = document.querySelector(".seven");
+  const cell8 = document.querySelector(".eight");
+  const cell9 = document.querySelector(".nine");
+
+  const cells = document.querySelectorAll(".cell");
+  cells.forEach((cell) =>
+    cell.addEventListener("click", function () {
+      console.log(cell);
+      console.log(game.getActivePlayer());
+      if (cell == cell1) {
+        console.log(game.getActivePlayer());
+        cell.textContent = game.getActivePlayer().mark;
+        game.playRound(0, 0);
+      }
+      if (cell == cell2) {
+        cell.textContent = game.getActivePlayer().mark;
+        game.playRound(0, 1);
+      }
+      if (cell == cell3) {
+        cell.textContent = game.getActivePlayer().mark;
+        game.playRound(0, 2);
+      }
+      if (cell == cell4) {
+        cell.textContent = game.getActivePlayer().mark;
+        game.playRound(1, 0);
+      }
+      if (cell == cell5) {
+        cell.textContent = game.getActivePlayer().mark;
+        game.playRound(1, 1);
+      }
+      if (cell == cell6) {
+        cell.textContent = game.getActivePlayer().mark;
+        game.playRound(1, 2);
+      }
+      if (cell == cell7) {
+        cell.textContent = game.getActivePlayer().mark;
+        game.playRound(2, 0);
+      }
+      if (cell == cell8) {
+        cell.textContent = game.getActivePlayer().mark;
+        game.playRound(2, 1);
+      }
+      if (cell == cell9) {
+        cell.textContent = game.getActivePlayer().mark;
+        game.playRound(2, 2);
+      }
+    }),
+  );
+}
+ScreenController();
