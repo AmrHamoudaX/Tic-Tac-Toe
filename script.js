@@ -308,7 +308,10 @@ function ScreenController() {
   );
 }
 ScreenController();
-
+const reset = document.querySelector(".reset");
+reset.addEventListener("click", () => {
+  window.location.reload();
+});
 ////Reset game
 //function GameOver() {
 //  const board = GameController().getBoard;
