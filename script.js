@@ -145,7 +145,7 @@ function GameController(player1 = "firstPlayer", player2 = "secondPlayer") {
         board.getBoard()[2][0].getValue() === "O"
       ) {
         const congrats = document.querySelector(".congrats h1");
-        congrats.textContent = `It's ${players[0].name}'s win!!!`;
+        congrats.textContent = `It's ${players[1].name}'s win!!!`;
         congrats.style.backgroundColor = "#5BD1D7 ";
       }
       //Check for winning for first vertical line
@@ -308,3 +308,13 @@ function ScreenController() {
   );
 }
 ScreenController();
+
+////Reset game
+//function GameOver() {
+//  const board = GameController().getBoard;
+//
+//  const congrats = document.querySelector(".congrats h1");
+//  congrats.textContent = "";
+//  congrats.style.backgroundColor = "";
+//  const cells = document.querySelectorAll(".cell");
+//}
